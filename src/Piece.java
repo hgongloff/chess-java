@@ -3,6 +3,7 @@
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,10 +18,11 @@ public abstract class Piece {
     public Piece(int color, Square initSq, String img_file) {
         this.color = color;
         this.currentSquare = initSq;
-        
+        File imageFile = new File(img_file);
+
         try {
             if (this.img == null) {
-              this.img = ImageIO.read(getClass().getResource(img_file));
+              this.img = ImageIO.read(imageFile);
             }
           } catch (IOException e) {
             System.out.println("File not found: " + e.getMessage());
